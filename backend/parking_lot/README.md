@@ -5,3 +5,7 @@
 
 # Run
 `poetry run python manage.py runserver`
+
+# Test
+`poetry self add poethepoet`
+`poetry poe test`
