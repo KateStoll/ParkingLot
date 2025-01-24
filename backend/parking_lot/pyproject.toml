@@ -12,6 +12,8 @@ django = "^5.1.4"
 djangorestframework = "^3.15.2"
 poetry = "^2.0.0"
 
+[tool.poe.tasks]
+test = "poetry run ./manage.py test" 
 
 [build-system]
 requires = ["poetry-core"]
