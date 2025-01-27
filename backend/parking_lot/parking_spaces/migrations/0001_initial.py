@@ -15,10 +15,10 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ParkingSpace',
+            name='parkingspace',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('taken', models.BooleanField()),
+                ('id', models.AutoField(primary_key=True, serialize=False, verbose_name='ID')),
+                ('taken', models.BooleanField(default=False)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
             ],

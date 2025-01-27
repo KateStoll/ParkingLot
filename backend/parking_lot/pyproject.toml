@@ -11,9 +11,14 @@ python = "^3.10"
 django = "^5.1.4"
 djangorestframework = "^3.15.2"
 poetry = "^2.0.0"
+djoser = "^2.3.1"
+
+[tool.poetry.group.dev.dependencies]
+django-extensions = "^3.2.3"
 
 [tool.poe.tasks]
 test = "poetry run ./manage.py test" 
+manage = "poetry run ./manage.py"
 
 [build-system]
 requires = ["poetry-core"]
