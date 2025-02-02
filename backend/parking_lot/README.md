@@ -1,9 +1,9 @@
 
 # Setup
-`asdf install`
-`poetry install`
-`poetry poe manage createsuperuser` # username password doesn't matter
-`poetry poe manage migrate`
+`asdf install`  
+`poetry install`   
+`poetry poe manage createsuperuser` # username password doesn't matter  
+`poetry poe manage migrate`  
 
 # Run
 `poetry poe manage.py runserver`
