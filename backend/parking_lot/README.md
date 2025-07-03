@@ -2,11 +2,11 @@
 # Setup
 `asdf install`  
 `poetry install`   
-`poetry poe manage createsuperuser` # username password doesn't matter  
+`poetry poe manage createsuperuser` # enter in w/e username and pass you want  
 `poetry poe manage migrate`  
 
 # Run
-`poetry poe manage.py runserver`
+`poetry poe manage runserver`
 
 # curl example
 ```bash
@@ -18,8 +18,8 @@ response =>
 
 ```bash
 curl -X POST -H 'Authorization: Token $token_from_previous_example' \
-     -H 'Accept: application/json; indent=4'
-     -H 'Content-Type: application/json'
+     -H 'Accept: application/json; indent=4' \
+     -H 'Content-Type: application/json' \
      -d '{"taken": true}'  http://127.0.0.1:8000/api/v1/parking-spaces
 ```
 response =>
