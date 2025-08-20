@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+function App() { 
+  const [currentState, setState] = useState("");  
+
+  async function handleSubmit(event) {
+    event.preventDefault(); 
+
+    const response = await fetch("http://localhost:8000/parking", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ currentState: currentState })
+    });
+
+    const data = await response.json();
+
+    console.log("Server says:", data);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Parking Lot App</h1>
+      <form style={{ margin: "20px" }} onSubmit={handleSubmit}>
+        <label>
+          Insert Parking Spot:{" "}
+          <input
+            type="text"
+            value={currentState}
+            onChange={function(event) { setState(event.target.value); }}
+          />
+        </label>
+        <button type="submit" style={{ marginLeft: "10px" }}>
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
 
+
+
 export default App;
+
