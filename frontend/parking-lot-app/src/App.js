@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./App.css";
 
 function App() {
   const [currentState, setState] = useState(""); 
@@ -17,6 +16,7 @@ function App() {
           "Content-Type": "application/json",
           "Authorization": "Token " + token
         },
+        // Just mark spots as taken or free based on input
         body: JSON.stringify({ taken: Number(currentState) % 2 === 0 }) 
       });
 
@@ -25,11 +25,8 @@ function App() {
       }
 
       const data = await response.json();
-      console.log("Server says:", data);
-
       setServerMessage("Spot submitted! Server response: " + JSON.stringify(data));
     } catch (error) {
-      console.error("Error talking to the server:", error);
       setServerMessage("Something went wrong: " + error.message);
     }
   }
@@ -37,25 +34,18 @@ function App() {
   return (
     <div>
       <h1>Parking Lot App</h1>
-      <form style={{ margin: "20px" }} onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           Insert Parking Spot:{" "}
           <input
             type="text"
             value={currentState}
-            onChange={(event) => setState(event.target.value)}
+            onChange={(e) => setState(e.target.value)}
           />
         </label>
-        <button type="submit" style={{ marginLeft: "10px" }}>
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
-
-      {serverMessage && (
-        <div style={{ marginTop: "20px", color: "green" }}>
-          {serverMessage}
-        </div>
-      )}
+      {serverMessage && <p>{serverMessage}</p>}
     </div>
   );
 }
